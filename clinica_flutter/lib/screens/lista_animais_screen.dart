@@ -27,7 +27,9 @@ class _ListaAnimaisScreenState extends State<ListaAnimaisScreen> {
   /// Busca a lista de novo (puxar para atualizar, botão "Tentar de novo" e após cadastrar).
   Future<void> _recarregar() async {
     final futuro = _api.listarAnimais();
-    setState(() => _animais = futuro);
+    setState(() {
+      _animais = futuro;
+    });
     try {
       await futuro;
     } catch (_) {

@@ -111,7 +111,9 @@ class _CadastroAnimalScreenState extends State<CadastroAnimalScreen> {
             return MensagemTela(
               icone: Icons.cloud_off,
               texto: snapshot.error.toString(),
-              aoTentarDeNovo: () => setState(() => _tutores = _api.listarTutores()),
+              aoTentarDeNovo: () => setState(() {
+                _tutores = _api.listarTutores();
+              }),
             );
           }
           final tutores = snapshot.data!;

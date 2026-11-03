@@ -40,7 +40,9 @@ class _DetalhesAnimalScreenState extends State<DetalhesAnimalScreen> {
             return MensagemTela(
               icone: Icons.cloud_off,
               texto: snapshot.error.toString(),
-              aoTentarDeNovo: () => setState(() => _animal = _api.buscarAnimal(widget.id)),
+              aoTentarDeNovo: () => setState(() {
+                _animal = _api.buscarAnimal(widget.id);
+              }),
             );
           }
 
