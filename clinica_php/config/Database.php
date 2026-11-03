@@ -11,7 +11,7 @@ class Database
     private const USUARIO = 'root';
     private const SENHA   = '';
 
-    private static ?PDO $conexao = null;
+    private static $conexao = null; // guarda a conexão PDO
 
     public static function conectar(): PDO
     {

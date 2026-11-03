@@ -5,7 +5,8 @@ require_once __DIR__ . '/../models/Tutor.php';
 
 class AnimalController extends Controller
 {
-    private Animal $model;
+    /** @var Animal */
+    private $model;
 
     public function __construct()
     {

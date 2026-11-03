@@ -4,7 +4,8 @@ require_once __DIR__ . '/../models/Tutor.php';
 
 class TutorController extends Controller
 {
-    private Tutor $model;
+    /** @var Tutor */
+    private $model;
 
     public function __construct()
     {

@@ -1,7 +1,13 @@
 <?php
-$invalido = fn($campo) => isset($erros[$campo]) ? ' is-invalid' : '';
-$msg = fn($campo) => isset($erros[$campo]) ? '<div class="invalid-feedback">' . e($erros[$campo]) . '</div>' : '';
-$valor = fn($campo) => e($animal[$campo] ?? '');
+$invalido = function ($campo) use ($erros) {
+    return isset($erros[$campo]) ? ' is-invalid' : '';
+};
+$msg = function ($campo) use ($erros) {
+    return isset($erros[$campo]) ? '<div class="invalid-feedback">' . e($erros[$campo]) . '</div>' : '';
+};
+$valor = function ($campo) use ($animal) {
+    return e($animal[$campo] ?? '');
+};
 ?>
 <h1 class="h3 mb-3"><?= e($titulo) ?></h1>
 

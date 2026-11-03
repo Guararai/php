@@ -1,7 +1,11 @@
 <?php
 // Função curta para marcar o campo com erro e mostrar a mensagem
-$invalido = fn($campo) => isset($erros[$campo]) ? ' is-invalid' : '';
-$msg = fn($campo) => isset($erros[$campo]) ? '<div class="invalid-feedback">' . e($erros[$campo]) . '</div>' : '';
+$invalido = function ($campo) use ($erros) {
+    return isset($erros[$campo]) ? ' is-invalid' : '';
+};
+$msg = function ($campo) use ($erros) {
+    return isset($erros[$campo]) ? '<div class="invalid-feedback">' . e($erros[$campo]) . '</div>' : '';
+};
 ?>
 <h1 class="h3 mb-3"><?= e($titulo) ?></h1>
 

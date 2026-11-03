@@ -39,7 +39,7 @@ class Animal
                     imagem_url = ?, tutor_id = ?
              WHERE id = ?'
         );
-        $stmt->execute([...$this->valores($d), $id]);
+        $stmt->execute(array_merge($this->valores($d), [$id]));
     }
 
     public function excluir(int $id): void
@@ -51,7 +51,9 @@ class Animal
     /** Monta os valores na ordem das colunas; campos vazios viram NULL. */
     private function valores(array $d): array
     {
-        $vazio = fn($campo) => trim((string) ($d[$campo] ?? '')) === '';
+        $vazio = function ($campo) use ($d) {
+            return trim((string) ($d[$campo] ?? '')) === '';
+        };
         return [
             trim($d['nome']),
             trim($d['especie']),
@@ -70,7 +72,9 @@ class Animal
     public static function validar(array $d): array
     {
         $erros = [];
-        $texto = fn($campo) => trim((string) ($d[$campo] ?? ''));
+        $texto = function ($campo) use ($d) {
+            return trim((string) ($d[$campo] ?? ''));
+        };
 
         if ($texto('nome') === '')    $erros['nome'] = 'Informe o nome do animal.';
         if ($texto('especie') === '') $erros['especie'] = 'Informe a espécie.';
